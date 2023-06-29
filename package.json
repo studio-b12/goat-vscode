@@ -1,0 +1,34 @@
+{
+  "name": "goatfile",
+  "displayName": "Goatfile",
+  "description": "Language support for Goatfiles",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.79.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "goat",
+        "aliases": [
+          "Goatfile",
+          "goat"
+        ],
+        "extensions": [
+          ".goat"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "goat",
+        "scopeName": "source.goat",
+        "path": "./syntaxes/goat.tmLanguage.json"
+      }
+    ]
+  }
+}

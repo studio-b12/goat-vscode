@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "scopeName": "source.goat",
+  "name": "Goat",
+  "fileTypes": [".goat"],
+  "patterns": [
+    {
+      "name": "support.function.wordlist.goat",
+      "begin": "^\\s*use\\s+",
+      "end": "$",
+      "patterns": [
+        {
+          "name": "string.unquoted.goat",
+          "match": ".*"
+        }
+      ]
+    },
+    {
+      "name": "comment.line.double-slash.goat",
+      "match": "^\\s*//.*$"
+    },
+    {
+      "name": "markup.heading.goat",
+      "match": "^\\s*#{3}\\s+\\w+"
+    },
+    {
+      "name": "markup.italic.goat",
+      "match": "^\\s*#{5}\\s+.+$"
+    },
+    {
+      "name": "entity.name.function.goat",
+      "begin": "^\\s*[A-Z]+\\s+",
+      "end": "$",
+      "patterns": [
+        {
+          "name": "support.function.goat",
+          "begin": "\\{\\{",
+          "end": "\\}\\}",
+          "patterns": [
+            {
+              "name": "variable.parameter.goat",
+              "match": "[\\.\\-\\w]+"
+            }
+          ]
+        },
+        {
+          "name": "string.unquoted.goat",
+          "match": "[^(\\{\\{)]"
+        }
+      ]
+    },
+    {
+      "name": "entity.name.tag.goat",
+      "begin": "^\\s*\\[Header\\]$",
+      "end": "(^(?=---))|(^\\s*$)",
+      "patterns": [
+        {
+          "name": "entity.name.tag.goat",
+          "match": "^[\\w\\-]+"
+        },
+        {
+          "name": "punctuation.separator",
+          "match": ":"
+        },
+        {
+          "name": "string.unquoted.goat",
+          "match": ".*$"
+        }
+      ]
+    },
+    {
+      "name": "entity.name.tag.goat",
+      "begin": "^\\s*\\[Body\\]$",
+      "end": "(^(?=---))|(^\\s*$)",
+      "contentName": "string.quoted.goat",
+      "patterns": [
+        {
+          "name": "support.function.goat",
+          "begin": "\\{\\{",
+          "end": "\\}\\}",
+          "patterns": [
+            {
+              "name": "variable.parameter.goat",
+              "match": "[\\.\\-\\w]+"
+            }
+          ]
+        },
+        {
+          "name": "comment.line.goat",
+          "match": "```"
+        },
+        {
+          "name": "string.unquoted.goat",
+          "match": "[^(\\{\\{)(```)]"
+        }
+      ]
+    },
+    {
+      "name": "entity.name.tag.goat",
+      "begin": "^\\s*\\[QueryParams|MultipartFormdata|Options\\]",
+      "end": "(^(?=---))|(^\\s*$)",
+      "patterns": [
+        {
+          "include": "source.toml"
+        }
+      ]
+    },
+    {
+      "name": "entity.name.tag.goat",
+      "begin": "^\\s*\\[Script\\]$",
+      "end": "^(?=-{3,})",
+      "patterns": [
+        {
+          "include": "source.js"
+        }
+      ]
+    },
+    {
+      "name": "keyword.other.request-separator.goat",
+      "match": "^\\s*-{3,}\\s*$"
+    }
+  ]
+}
