@@ -47,7 +47,7 @@ git clone https://github.com/studio-b12/goat-vscode.git "$HOME/.vscode-insiders/
 
 If you are using Windows, you might want to use the following command.
 ```
-git clone https://github.com/studio-b12/goat-vscode.git %UserProfile%\.vscode-insiders\extensions\goatfile"
+git clone https://github.com/studio-b12/goat-vscode.git %USERPROFILE%\.vscode\extensions\goatfile
 ```
 
 ## Release Notes
