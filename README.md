@@ -50,6 +50,10 @@ If you are using Windows, you might want to use the following command.
 git clone https://github.com/studio-b12/goat-vscode.git %USERPROFILE%\.vscode\extensions\goatfile
 ```
 
+If this does not work, you can also download the extension package from the [latest build artifacts](https://github.com/studio-b12/goat-vscode/actions/workflows/artifacts.yaml). Simply download the `.vslx` and import it using the `Extensions: Install from VSIX...` command.
+
+![](https://github.com/studio-b12/goat-vscode/assets/16734205/5e7a9fd7-35f0-4591-97cf-268c36849a39)
+
 ## Release Notes
 
 Users appreciate release notes as you update your extension.
