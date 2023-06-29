@@ -3,6 +3,14 @@
   "displayName": "Goatfile",
   "description": "Language support for Goatfiles",
   "version": "0.1.0",
+  "author": {
+    "name": "B12-Touch GmbH"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/studio-b12/goat-vscode"
+  },
   "engines": {
     "vscode": "^1.79.0"
   },
