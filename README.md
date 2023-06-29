@@ -2,6 +2,9 @@
 
 This is the Visual Studio Code extension adding language support for [Goatfiles](https://github.com/studio-b12/goat).
 
+> **Warning**  
+> This extension is currently not published on the VSCode marketplace. Therefore, see section [Manual Installation](#manual-installation) on how to install this extension.
+
 ## Features
 
 ### Syntax Highlighting
@@ -28,6 +31,24 @@ This extension contributes the following settings:
 <!-- ## Known Issues
 
 Calling out known issues can help limit users opening duplicate issues against your extension. -->
+
+## Manual Installation
+
+Because this extension is currently not listed on the VSCode Marketplace, you need to install the repository manually by cloning the contents of this repository into a `goatfile` directory in your `.vscode/extensions` directory.
+
+```
+git clone https://github.com/studio-b12/goat-vscode.git "$HOME/.vscode/extensions/goatfile"
+```
+
+If you are using VSCode Insiders, you need to use the following command.
+```
+git clone https://github.com/studio-b12/goat-vscode.git "$HOME/.vscode-insiders/extensions/goatfile"
+```
+
+If you are using Windows, you might want to use the following command.
+```
+git clone https://github.com/studio-b12/goat-vscode.git %UserProfile%\.vscode-insiders\extensions\goatfile"
+```
 
 ## Release Notes
 
