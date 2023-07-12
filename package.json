@@ -6,6 +6,9 @@
   "author": {
     "name": "B12-Touch GmbH"
   },
+  "scripts": {
+    "build": "js-yaml syntaxes/goat.tmLanguage.yaml > syntaxes/goat.tmLanguage.json"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -38,5 +41,8 @@
         "path": "./syntaxes/goat.tmLanguage.json"
       }
     ]
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
   }
 }

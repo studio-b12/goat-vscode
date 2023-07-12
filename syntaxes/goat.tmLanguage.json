@@ -1,111 +1,122 @@
 {
-  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "scopeName": "source.goat",
   "name": "Goat",
-  "fileTypes": [".goat"],
+  "fileTypes": [
+    ".goat"
+  ],
   "patterns": [
     {
-      "name": "support.function.wordlist.goat",
-      "begin": "^\\s*use\\s+",
-      "end": "$",
-      "patterns": [
-        {
-          "name": "string.unquoted.goat",
-          "match": ".*"
-        }
-      ]
+      "include": "#comment"
     },
     {
-      "name": "comment.line.double-slash.goat",
-      "match": "^\\s*//.*$"
+      "include": "#template"
     },
     {
-      "name": "markup.heading.goat",
-      "match": "^\\s*#{3}\\s+\\w+"
+      "include": "#delimiter"
     },
     {
-      "name": "markup.italic.goat",
-      "match": "^\\s*#{5}\\s+.+$"
+      "include": "#section"
     },
     {
+      "include": "#logline"
+    },
+    {
+      "include": "#block-header"
+    },
+    {
+      "include": "#block-body"
+    },
+    {
+      "include": "#block-kv"
+    },
+    {
+      "include": "#block-script"
+    },
+    {
+      "include": "#block-prescript"
+    },
+    {
+      "include": "#request"
+    },
+    {
+      "include": "#directive-use"
+    },
+    {
+      "include": "#directive-execute-short"
+    },
+    {
+      "include": "#directive-execute-long"
+    },
+    {
+      "include": "#directive-return"
+    }
+  ],
+  "repository": {
+    "comment": {
+      "name": "comment.line.goat",
+      "match": "//.*$"
+    },
+    "delimiter": {
+      "name": "keyword.other.request-separator.goat",
+      "match": "^-{3,}$"
+    },
+    "request": {
       "name": "entity.name.function.goat",
       "begin": "^\\s*[A-Z]+\\s+",
       "end": "$",
       "patterns": [
         {
-          "name": "support.function.goat",
-          "begin": "\\{\\{",
-          "end": "\\}\\}",
-          "patterns": [
-            {
-              "name": "variable.parameter.goat",
-              "match": "[\\.\\-\\w]+"
-            }
-          ]
+          "include": "#template"
         },
         {
-          "name": "string.unquoted.goat",
-          "match": "[^(\\{\\{)]"
+          "include": "#string-literal"
         }
       ]
     },
-    {
-      "name": "entity.name.tag.goat",
-      "begin": "^\\s*\\[Header\\]$",
-      "end": "(^(?=---))|(^\\s*$)",
-      "patterns": [
-        {
-          "name": "entity.name.tag.goat",
-          "match": "^[\\w\\-]+"
-        },
-        {
-          "name": "punctuation.separator",
-          "match": ":"
-        },
-        {
-          "name": "string.unquoted.goat",
-          "match": ".*$"
-        }
-      ]
+    "section": {
+      "name": "markup.heading.goat",
+      "match": "^#{3} \\w+\\s*$"
     },
-    {
+    "logline": {
+      "name": "markup.italic.goat",
+      "match": "^#{5} .*$"
+    },
+    "block-body": {
       "name": "entity.name.tag.goat",
       "begin": "^\\s*\\[Body\\]$",
       "end": "(^(?=---))|(^\\s*$)",
       "contentName": "string.quoted.goat",
       "patterns": [
         {
-          "name": "support.function.goat",
-          "begin": "\\{\\{",
-          "end": "\\}\\}",
-          "patterns": [
-            {
-              "name": "variable.parameter.goat",
-              "match": "[\\.\\-\\w]+"
-            }
-          ]
+          "include": "#escape-line"
         },
         {
-          "name": "comment.line.goat",
-          "match": "```"
-        },
-        {
-          "name": "string.unquoted.goat",
-          "match": "[^(\\{\\{)(```)]"
+          "include": "#template"
         }
       ]
     },
-    {
+    "block-kv": {
       "name": "entity.name.tag.goat",
       "begin": "^\\s*\\[QueryParams|MultipartFormdata|Options\\]",
       "end": "(^(?=---))|(^\\s*$)",
+      "contentName": "support.unquoted.goat",
       "patterns": [
         {
           "include": "source.toml"
         }
       ]
     },
-    {
+    "block-header": {
+      "name": "entity.name.tag.goat",
+      "begin": "^\\s*\\[Header\\]$",
+      "end": "(^(?=---))|(^\\s*$)",
+      "patterns": [
+        {
+          "include": "#header-kv"
+        }
+      ]
+    },
+    "block-script": {
       "name": "entity.name.tag.goat",
       "begin": "^\\s*\\[Script\\]$",
       "end": "^(?=-{3,})",
@@ -115,9 +126,125 @@
         }
       ]
     },
-    {
-      "name": "keyword.other.request-separator.goat",
-      "match": "^\\s*-{3,}\\s*$"
+    "block-prescript": {
+      "name": "entity.name.tag.goat",
+      "begin": "^\\s*\\[PreScript\\]$",
+      "end": "(^(?=---))|(^\\s*$)",
+      "patterns": [
+        {
+          "include": "source.js"
+        }
+      ]
+    },
+    "directive-use": {
+      "name": "support.function.wordlist.goat",
+      "begin": "^\\s*use\\s+",
+      "end": "$",
+      "patterns": [
+        {
+          "include": "#string-literal"
+        }
+      ]
+    },
+    "directive-execute-short": {
+      "name": "support.function.wordlist.goat",
+      "match": "^\\s*execute (\".*\"|[^\\s]+)\\s*$",
+      "captures": {
+        "1": {
+          "name": "string.quoted.goat"
+        }
+      }
+    },
+    "directive-execute-long": {
+      "name": "support.function.wordlist.goat",
+      "begin": "execute",
+      "end": "\\)",
+      "patterns": [
+        {
+          "include": "#parameter-list"
+        },
+        {
+          "include": "#string-literal"
+        }
+      ]
+    },
+    "directive-return": {
+      "name": "support.function.wordlist.goat",
+      "begin": "return",
+      "end": "\\)",
+      "patterns": [
+        {
+          "include": "#return-list"
+        }
+      ]
+    },
+    "template": {
+      "name": "support.function.goat",
+      "begin": "\\{\\{",
+      "end": "\\}\\}",
+      "patterns": [
+        {
+          "include": "#variable-path"
+        }
+      ]
+    },
+    "variable-path": {
+      "name": "variable.parameter.goat",
+      "match": "[\\.\\-\\w]+"
+    },
+    "escape-line": {
+      "name": "comment.line.goat",
+      "match": "```"
+    },
+    "header-kv": {
+      "patterns": [
+        {
+          "include": "#template"
+        },
+        {
+          "name": "keyword.other.goat",
+          "match": "[A-Za-z\\-]+(?=:)"
+        },
+        {
+          "name": "punctuation.separator.goat",
+          "match": ":"
+        },
+        {
+          "include": "#string-literal"
+        }
+      ]
+    },
+    "string-literal": {
+      "name": "string.quoted.goat",
+      "match": "(\"[^\\{]*\")|([^\\s\\{]+)"
+    },
+    "parameter-list": {
+      "begin": "\\(",
+      "end": "(?=\\))",
+      "name": "variable.parameter.goat"
+    },
+    "return-list": {
+      "begin": "\\(",
+      "end": "(?=\\))",
+      "patterns": [
+        {
+          "include": "#return-assignment"
+        }
+      ]
+    },
+    "return-assignment": {
+      "match": "(\\w+) (as) (\\w+)",
+      "captures": {
+        "1": {
+          "name": "variable.parameter.goat"
+        },
+        "2": {
+          "name": "keyword.other.goat"
+        },
+        "3": {
+          "name": "variable.parameter.goat"
+        }
+      }
     }
-  ]
+  }
 }
