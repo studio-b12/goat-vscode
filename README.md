@@ -34,7 +34,11 @@ Calling out known issues can help limit users opening duplicate issues against y
 
 ## Manual Installation
 
-Because this extension is currently not listed on the VSCode Marketplace, you need to install the repository manually by cloning the contents of this repository into a `goatfile` directory in your `.vscode/extensions` directory.
+You can download the latest release VSIX package from the [**Releases page**](https://github.com/studio-b12/goat-vscode/releases). Simply download the `.vslx` and import it using the `Extensions: Install from VSIX...` command in VSCode.
+
+![](https://github.com/studio-b12/goat-vscode/assets/16734205/5e7a9fd7-35f0-4591-97cf-268c36849a39)
+
+If you want to use the latest version from the source, you can simply clone the repository to your `.vscode/extensions` directory.
 
 ```
 git clone https://github.com/studio-b12/goat-vscode.git "$HOME/.vscode/extensions/goatfile"
@@ -50,15 +54,17 @@ If you are using Windows, you might want to use the following command.
 git clone https://github.com/studio-b12/goat-vscode.git %USERPROFILE%\.vscode\extensions\goatfile
 ```
 
-If this does not work, you can also download the extension package from the [latest build artifacts](https://github.com/studio-b12/goat-vscode/actions/workflows/artifacts.yaml). Simply download the `.vslx` and import it using the `Extensions: Install from VSIX...` command.
-
-![](https://github.com/studio-b12/goat-vscode/assets/16734205/5e7a9fd7-35f0-4591-97cf-268c36849a39)
-
 ## Release Notes
 
 Users appreciate release notes as you update your extension.
 
 ### 0.1.0
+
+- Added compatibility for `execute` statements added in goat v0.13.0.
+- Migrated to YAML syntax notation.
+- Optimize syntax tokenization.
+
+### 0.0.0
 
 Initial pre-release of this extension.
 
