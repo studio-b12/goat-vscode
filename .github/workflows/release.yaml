@@ -1,0 +1,44 @@
+name: release
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["[0-9]+.[0-9]+.[0-9]+*"]
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v3
+
+      - name: Install vsce
+        run: npm i -g @vscode/vsce
+
+      - name: Inject version from tag
+        run: npx gitv
+
+      - name: Install packages
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Create Extension Package
+        run: vsce package
+
+      - name: Get Package Version
+        id: get_version
+        run: echo "VERSION=$(cat package.json | jq -r .version)" >> $GITHUB_ENV
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: goatfile-${{ env.VERSION }}.vsix
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
