@@ -1,7 +1,7 @@
 {
   "comments": {
     // symbol used for single line comment. Remove this entry if your language does not support line comments
-    "lineComment": "//"
+    "lineComment": "//",
   },
   // symbols used as brackets
   "brackets": [
@@ -24,5 +24,14 @@
     ["(", ")"],
     ["\"", "\""],
     ["'", "'"]
+  ],
+  "onEnterRules": [
+    {
+      "beforeText": "^///.*",
+      "action": {
+        "indent": "none",
+        "appendText": "/// "
+      }
+    }
   ]
 }
