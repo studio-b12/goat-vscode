@@ -56,8 +56,6 @@ git clone https://github.com/studio-b12/goat-vscode.git %USERPROFILE%\.vscode\ex
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 0.1.0
 
 - Added compatibility for `execute` statements added in goat v0.13.0.
