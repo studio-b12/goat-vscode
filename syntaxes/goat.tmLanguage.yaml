@@ -72,7 +72,7 @@ repository:
   block-script:
     name: entity.name.tag.goat
     begin: "^\\s*\\[Script\\]$"
-    end: "^(?=-{3,})"
+    end: "^(?=-{3,})|(?=#{3,})"
     patterns:
       - include: source.js
 
