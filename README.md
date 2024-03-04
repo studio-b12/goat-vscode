@@ -56,6 +56,15 @@ git clone https://github.com/studio-b12/goat-vscode.git %USERPROFILE%\.vscode\ex
 
 ## Release Notes
 
+### 0.3.0
+
+- Added `[Auth]` block highlighting.
+- Optimized `[Script]` block end detection.
+
+### 0.2.0
+
+- Added block comment `/// ...` enter action.
+
 ### 0.1.0
 
 - Added compatibility for `execute` statements added in goat v0.13.0.
