@@ -56,7 +56,7 @@ repository:
 
   block-kv:
     name: entity.name.tag.goat
-    begin: "^\\s*\\[QueryParams|MultipartFormdata|Options\\]"
+    begin: "^\\s*\\[QueryParams|MultipartFormdata|Options|Auth\\]"
     end: "(^(?=---))|(^\\s*$)"
     contentName: "support.unquoted.goat"
     patterns:
