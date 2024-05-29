@@ -1,11 +1,11 @@
 name: Build Artifacts
 on:
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - "main"
-  #   paths-ignore:
-  #     - "**.md"
+  push:
+    branches:
+      - "main"
+    paths-ignore:
+      - "**.md"
 
 jobs:
   build_artifacts:
@@ -33,4 +33,4 @@ jobs:
         with:
           name: goatfile-${{ env.VERSION }}.vsix
           path: ./goatfile-${{ env.VERSION }}.vsix
-          retention-day: 90
+          retention-day: 15

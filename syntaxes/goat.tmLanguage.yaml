@@ -20,11 +20,10 @@ patterns:
   - include: "#directive-return"
 
 repository:
-  
   comment:
     name: comment.line.goat
-    match: '//.*$'
-  
+    match: "//.*$"
+
   delimiter:
     name: keyword.other.request-separator.goat
     match: "^-{3,}$"
@@ -56,7 +55,7 @@ repository:
 
   block-kv:
     name: entity.name.tag.goat
-    begin: "^\\s*\\[QueryParams|MultipartFormdata|Options|Auth\\]"
+    begin: "^\\s*\\[QueryParams|MultipartFormdata|Options|Auth|FormData\\]"
     end: "(^(?=---))|(^\\s*$)"
     contentName: "support.unquoted.goat"
     patterns:
@@ -118,7 +117,7 @@ repository:
     end: "\\}\\}"
     patterns:
       - include: "#variable-path"
-      
+
   variable-path:
     name: variable.parameter.goat
     match: "[\\.\\-\\w]+"

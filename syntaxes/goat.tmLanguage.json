@@ -97,7 +97,7 @@
     },
     "block-kv": {
       "name": "entity.name.tag.goat",
-      "begin": "^\\s*\\[QueryParams|MultipartFormdata|Options|Auth\\]",
+      "begin": "^\\s*\\[QueryParams|MultipartFormdata|Options|Auth|FormData\\]",
       "end": "(^(?=---))|(^\\s*$)",
       "contentName": "support.unquoted.goat",
       "patterns": [
